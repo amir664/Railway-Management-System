@@ -26,9 +26,7 @@ SECRET_KEY = 'django-insecure-=srk^k2nb7@y2w(#fk3dw29$kxda7g1@=4710ew$!$$&c1zi)(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'Localhost',
+ALLOWED_HOSTS = [ 'rmss-dcdma3f8euf7d3ee.centralindia-01.azurewebsites.net',
 ]
 
 
@@ -36,7 +34,7 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.auth',	
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -80,11 +78,14 @@ WSGI_APPLICATION = 'lttp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("POSTGRES_DB", "postgres"),
+        "USER": os.environ.get("POSTGRES_USER", "postgres"),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD", "postgres"),
+        "HOST": os.environ.get("POSTGRES_HOST", "database"),
+        "PORT": os.environ.get("POSTGRES_PORT", "5432"),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -135,3 +136,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'app.CustomUser'
 
 LOGOUT_REDIRECT_URL = "/"
+
