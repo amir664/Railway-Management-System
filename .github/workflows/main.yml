@@ -21,7 +21,7 @@ jobs:
               --password-stdin                                                                                       
 
       - name: docker-compose
-        run:  docker compose up
+        run:  docker compose up -d
 
-      - name: testing
-        run: curl   
+      - name: Test Application
+        run: curl http://localhost:6000 
