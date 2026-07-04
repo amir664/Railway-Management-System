@@ -2,7 +2,7 @@ name: rms pipeline
 on:
   push:
     branches:
-      - main
+      - production
 
 jobs:
   build:
@@ -16,9 +16,9 @@ jobs:
 
       - name: docker login 
         run:  |
-        echo "${{secrets.DOCKER_PASSWORD}}" |  docker login \
-        -u "${{secrets.DOCKER_USERNAME}}" \
-        --password-stdin                                                                                       
+              echo "${{secrets.DOCKER_PASSWORD}}" |  docker login \
+              -u "${{secrets.DOCKER_USERNAME}}" \
+              --password-stdin                                                                                       
 
       - name: docker-compose
         run:  docker compose up
